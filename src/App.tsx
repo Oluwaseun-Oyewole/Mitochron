@@ -1,8 +1,8 @@
 function App() {
   return (
-    <>
-      <div className="text-3xl bg-red-500">Vite + React</div>
-    </>
+    <div className="font-roboto text-center flex items-center justify-center h-screen">
+      Mitochron
+    </div>
   )
 }
 
