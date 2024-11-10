@@ -1,35 +1,44 @@
-import { motion } from "framer-motion"
-import { type ButtonHTMLAttributes, type PropsWithChildren } from "react"
+import classNames from "classnames"
+import { type ButtonHTMLAttributes } from "react"
+import Loader from "../loading"
 
-type ButtonType = "default" | "primary" | "custom"
-const CustomButton = ({
+type VariantType = "default" | "secondary"
+type IProps = {
+  isLoading?: boolean
+  variant?: VariantType
+} & ButtonHTMLAttributes<HTMLButtonElement>
+export default function Button({
   children,
-  buttonType = "default",
-  fill,
+  className,
+  variant = "default",
+  isLoading = false,
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement> &
-  PropsWithChildren & {
-    buttonType?: ButtonType
-    fill?: string
-  }) => {
-  const styles = (buttonType: ButtonType) => {
-    switch (buttonType) {
-      case "primary":
-        return "!bg-primary500 hover:!bg-purple-700 !py-4 lg:!py-5 !text-xs"
-      case "custom":
-        return `${fill} rounded-xl text-white font-medium oswald group relative flex h-[62px] w-4/5 items-center justify-center gap-3 overflow-hidden rounded-xl md:h-[65px] md:w-[250px]`
+}: IProps) {
+  const customButtonStyles = (variant: VariantType) => {
+    switch (variant) {
+      case "default":
+        return "bg-transparent px-7 py-3 rounded-lg"
+      case "secondary":
+        return "bg-textColor text-black border-[1px] border-gray-200 px-7 py-4 rounded-xl hover:bg-gray-100"
       default:
-        return `bg-black`
+        return null
     }
   }
+
   return (
-    <button className={styles(buttonType)} {...rest}>
-      <motion.div className="absolute left-0 bottom-0 right-0 z-10 w-[0px] group-hover:w-full rounded-xl bg-black transition-all mx-auto duration-500 ease-in-out h-full" />
-      <span className="z-20 group-hover:text-gray-100 transition-all mx-auto duration-500 ease-in-out">
-        {children}
-      </span>
+    <button
+      {...rest}
+      className={classNames(
+        `w-full flex items-center justify-center gap-4 font-light text-textColor transition-all duration-700 ease-in-out hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-50`,
+        customButtonStyles(variant),
+        className,
+        {
+          " gap-4 !bg-formBg !text-gray_500": isLoading,
+        }
+      )}
+    >
+      {isLoading && <Loader />}
+      {children}
     </button>
   )
 }
-
-export default CustomButton

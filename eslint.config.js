@@ -37,6 +37,7 @@ export default tseslint.config(
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   }
 )

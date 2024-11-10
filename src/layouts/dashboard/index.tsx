@@ -1,13 +1,18 @@
-import { Outlet } from "react-router-dom"
+import React from "react"
+import Navigation from "../../components/custom/navigation"
 
 const DashboardLayout = () => {
   return (
-    <>
-      {/* <Navigation routes={dashboardNav} /> */}
-      <main className="flex items-center justify-center">
+    <React.Fragment>
+      <Navigation />
+      {/* <main
+        className="font-roboto container grid grid-flow-cols grid-cols-[0%_100%] md:grid-cols-[25%_70%] items-start"
+        role="main"
+      >
+        <Sidebar />
         <Outlet />
-      </main>
-    </>
+      </main> */}
+    </React.Fragment>
   )
 }
 

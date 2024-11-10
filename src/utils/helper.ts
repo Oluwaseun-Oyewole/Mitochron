@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { keyConstants } from "./keyConstants"
 
 export const isAuthenticated = () => {
@@ -26,3 +27,20 @@ export const isUnAuthenticated = () => {
 
 export const truncate = (text: string, n: number) =>
   text?.slice(0, 1) + `${text?.slice(1, n ?? 10)}....`
+
+export function useMediaQuery(query: string, initialValue = false) {
+  const [matches, setMatches] = useState<boolean>(initialValue)
+  useEffect(() => {
+    const media = window.matchMedia(query)
+    if (media.matches !== matches) {
+      setMatches(media.matches)
+    }
+    const listener = () => {
+      setMatches(media.matches)
+    }
+    media.addListener(listener)
+    return () => media.removeListener(listener)
+  }, [matches, query])
+
+  return matches
+}
