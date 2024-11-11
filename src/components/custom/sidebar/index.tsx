@@ -36,14 +36,14 @@ const Sidebar = () => {
   return (
     <aside
       role="complementary"
-      className="w-full border-r-[1px] overflow-y-scroll h-screen hidden lg:block pl-10"
+      className="w-full border-r-[1px] overflow-y-scroll h-screen hidden lg:block"
     >
       <motion.ul
         ref={ref}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
         variants={containerVariant}
-        className=""
+        className="pl-10"
       >
         <motion.li
           className="border-[1px] border-gray-200 rounded-2xl p-6 mr-5 mt-5  hover:bg-gray-50 transition-all ease-in-out duration-700"
@@ -129,7 +129,13 @@ const Sidebar = () => {
           })}
         </motion.li>
       </motion.ul>
-      <div className="border-gray-100 w-2 h-full" />
+      <div className="border-gray-100 border-t-[1px] pl-10 mt-10">
+        <ul className="flex items-center justify-center gap-10 pr-10 py-7">
+          <li>Terms of Service</li>
+          <li className="bg-black h-2 w-2 rounded-full" />
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
     </aside>
   )
 }

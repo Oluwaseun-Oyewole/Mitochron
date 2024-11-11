@@ -56,8 +56,8 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <ModalWrapper ref={modalRef} />
-      <section className="mt-8 flex flex-col xl:flex-row items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10">
-        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%] h-[270px]">
+      <section className="mt-8 xl:flex items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10">
+        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%]">
           {loading && (
             <div className="flex items-center justify-center">
               <Spin indicator={<LoadingOutlined spin />} size="small" />
@@ -94,23 +94,21 @@ const Dashboard = () => {
             )
           })}
         </ul>
-        <div className="w-full md:w-1/2 lg:w-full md:basis-[33%]">
-          <div className="bg-gray-100 flex justify-between flex-col items-center rounded-2xl h-[270px] hover:opacity-90 transition-all ease-in-out duration-500">
-            <div />
-            <div className="bg-white p-2 rounded-full w-fit">
-              <img src={plusIcon} className="w-[60px]" alt="" />
-            </div>
+        <div className="mt-5 xl:mt-0 md:w-1/2 lg:w-full xl:basis-[33%] bg-gray-100 flex justify-between flex-col items-center rounded-2xl h-[270px] hover:opacity-90 transition-all ease-in-out duration-500">
+          <div />
+          <div className="bg-white p-2 rounded-full w-fit">
+            <img src={plusIcon} className="w-[60px]" alt="" />
+          </div>
 
-            <div className="w-[90%] mb-4">
-              <CustomButton
-                variant="secondary"
-                className="!bg-white !border-green-800"
-                onClick={createDepartmentModal}
-              >
-                <img src={draft} alt="" />
-                <p> Create a department</p>
-              </CustomButton>
-            </div>
+          <div className="w-[90%] mb-4">
+            <CustomButton
+              variant="secondary"
+              className="!bg-white !border-green-800"
+              onClick={createDepartmentModal}
+            >
+              <img src={draft} alt="" />
+              <p> Create a department</p>
+            </CustomButton>
           </div>
         </div>
       </section>
