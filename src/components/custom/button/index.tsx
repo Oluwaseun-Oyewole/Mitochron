@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import { type ButtonHTMLAttributes } from "react"
-import Loader from "../loading"
 
 type VariantType = "default" | "secondary" | "form"
 type IProps = {
@@ -31,15 +30,12 @@ export default function Button({
     <button
       {...rest}
       className={classNames(
-        `w-full flex items-center justify-center gap-4 font-light text-textColor transition-all duration-700 ease-in-out hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-50`,
+        `w-full flex items-center justify-center gap-4 font-light text-textColor transition-all duration-700 ease-in-out hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-80`,
         customButtonStyles(variant),
-        className,
-        {
-          " gap-4 !bg-formBg !text-gray_500": isLoading,
-        }
+        className
       )}
     >
-      {isLoading && <Loader />}
+      {isLoading && <p>Loading....</p>}
       {children}
     </button>
   )

@@ -30,7 +30,7 @@ function CustomInput({
       <input
         {...props}
         className={classNames(
-          "mt-3 bg-gray-100 w-full h-[55px] outline-none border-none px-6 rounded-lg disabled:cursor-not-allowed",
+          "mt-2 bg-gray-100 w-full h-[55px] outline-none border-none px-6 rounded-lg disabled:cursor-not-allowed",
           className
         )}
         aria-describedby={name}

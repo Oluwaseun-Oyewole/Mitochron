@@ -56,22 +56,24 @@ const Budget = () => {
   }, [])
 
   return (
-    <Tabs
-      activeKey={activeKey}
-      onChange={onChange}
-      size="small"
-      tabBarStyle={{
-        color: "#98A5B1",
-      }}
-    >
-      {items.map((element) => {
-        return (
-          <Tabs.TabPane tab={element.label} key={element.path}>
-            {element.children}
-          </Tabs.TabPane>
-        )
-      })}
-    </Tabs>
+    <div className="overflow-y-scroll h-[87vh] pb-20">
+      <Tabs
+        activeKey={activeKey}
+        onChange={onChange}
+        size="small"
+        tabBarStyle={{
+          color: "#98A5B1",
+        }}
+      >
+        {items.map((element) => {
+          return (
+            <Tabs.TabPane tab={element.label} key={element.path}>
+              {element.children}
+            </Tabs.TabPane>
+          )
+        })}
+      </Tabs>
+    </div>
   )
 }
 

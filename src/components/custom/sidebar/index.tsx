@@ -36,7 +36,7 @@ const Sidebar = () => {
   return (
     <aside
       role="complementary"
-      className="w-full border-r-[1px] overflow-y-scroll h-screen hidden lg:block"
+      className="w-full border-r-[1px] overflow-y-scroll hidden lg:block overflow-y-scroll h-[87vh]"
     >
       <motion.ul
         ref={ref}

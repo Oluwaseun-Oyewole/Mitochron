@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - master
-      - feat/dashboard
+
   pull_request:
     branches:
       - master
-      - feat/dashboard
 
 jobs:
   lint-and-format:

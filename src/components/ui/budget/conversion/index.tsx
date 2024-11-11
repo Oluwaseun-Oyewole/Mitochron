@@ -131,7 +131,7 @@ const Conversion = () => {
     <div>
       <div className="border-[1px] border-gray-200 rounded-2xl">
         <div className="py-5 border-b-[1px] border-gray-200">
-          <h1 className="text-xMedium px-7">Conversion Rate</h1>
+          <h1 className="text-medium lg:text-xMedium px-7">Conversion Rate</h1>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="px-7 py-5">

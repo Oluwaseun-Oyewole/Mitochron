@@ -26,14 +26,14 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    const loadData = async () => {
+    const loadCards = async () => {
       setCards([])
       setLoading(true)
       const data = await fetchCards()
       setCards(data)
       setLoading(false)
     }
-    loadData()
+    loadCards()
   }, [])
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <ModalWrapper ref={modalRef} />
-      <section className="mt-8 xl:flex items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10">
+      <section className="mt-8 xl:flex items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10 h-[87vh] overflow-y-scroll pb-20">
         <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%]">
           {loading && (
             <div className="flex items-center justify-center">
