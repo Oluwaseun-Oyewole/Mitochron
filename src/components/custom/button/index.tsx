@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { type ButtonHTMLAttributes } from "react"
 import Loader from "../loading"
 
-type VariantType = "default" | "secondary"
+type VariantType = "default" | "secondary" | "form"
 type IProps = {
   isLoading?: boolean
   variant?: VariantType
@@ -20,6 +20,8 @@ export default function Button({
         return "bg-transparent px-7 py-3 rounded-lg"
       case "secondary":
         return "bg-textColor text-black border-[1px] border-gray-200 px-7 py-4 rounded-xl hover:bg-gray-100"
+      case "form":
+        return "bg-secondary-100 text-white py-4 px-7 rounded-xl hover:opacity-90"
       default:
         return null
     }

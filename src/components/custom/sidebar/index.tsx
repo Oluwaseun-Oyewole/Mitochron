@@ -14,7 +14,7 @@ import Tag from "../tag"
 
 const Sidebar = () => {
   const ref = useRef<HTMLUListElement>(null)
-  const isInView = useInView(ref, { once: false, amount: 0.5 })
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
   const { details } = useGlobalStoreHook()
 
   const containerVariant = {
@@ -34,16 +34,19 @@ const Sidebar = () => {
   }
 
   return (
-    <aside role="complementary" className="w-full border-r-[1px] md:hidden">
+    <aside
+      role="complementary"
+      className="w-full border-r-[1px] overflow-y-scroll h-screen hidden lg:block pl-10"
+    >
       <motion.ul
         ref={ref}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
         variants={containerVariant}
-        className="mt-8"
+        className=""
       >
         <motion.li
-          className="border-[1px] border-gray-200 rounded-2xl p-6 mb-6 hover:bg-gray-50 transition-all ease-in-out duration-700"
+          className="border-[1px] border-gray-200 rounded-2xl p-6 mr-5 mt-5  hover:bg-gray-50 transition-all ease-in-out duration-700"
           variants={itemVariant}
         >
           <div className="flex items-center gap-5">
@@ -70,7 +73,7 @@ const Sidebar = () => {
         </motion.li>
 
         <motion.li
-          className="border-[1px] border-gray-200 rounded-2xl p-6 mb-6 hover:bg-gray-50 transition-all ease-in-out duration-700"
+          className="border-[1px] border-gray-200  rounded-2xl p-6 my-5 mr-5 hover:bg-gray-50 transition-all ease-in-out duration-700"
           variants={itemVariant}
         >
           <div className="flex items-center justify-between">
@@ -103,7 +106,7 @@ const Sidebar = () => {
         </motion.li>
 
         <motion.li
-          className="border-[1px] border-gray-200 rounded-2xl p-6 mb-6 hover:bg-gray-50 transition-all ease-in-out duration-700"
+          className="border-[1px] mr-5 border-gray-200 rounded-2xl p-6  hover:bg-gray-50 transition-all ease-in-out duration-700"
           variants={itemVariant}
         >
           <div className="flex items-center g justify-between pb-5">

@@ -7,12 +7,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body {
+  overflow-x: hidden;
+}
 ul {
   list-style-type: none;
-}
-.container {
-  @apply px-5 lg:px-10 xl:p-0 md:max-w-[1350px] mx-auto;
 }
 
 @font-face {
@@ -39,3 +38,60 @@ ul {
   font-weight: 300;
 }
 /* Add other weights/styles if needed */
+.ant-tabs {
+  overflow-x: hidden !important;
+}
+
+.ant-tabs-nav {
+  border-bottom: 1px #c0c9c0 solid !important;
+  padding-right: 20px;
+}
+
+.ant-tabs-tab-btn {
+  color: black !important;
+  margin-left: 25px;
+  font-size: 17px;
+  background: #fff !important;
+  padding-bottom: 10px;
+  font-weight: 400 !important;
+}
+
+.ant-tabs-tabpane {
+  background: #fff !important;
+}
+
+.ant-select-selector {
+  background-color: #edeeea !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.ant-select-dropdown {
+  background-color: #fff !important;
+}
+
+.ant-tabs-top {
+  background-color: #fff !important;
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  background: #00361d !important;
+  height: 3px !important;
+  border-radius: 20px !important;
+}
+
+.custom-select .ant-select-selector {
+  border-radius: 10px !important;
+}
+
+.ant-select {
+  border-radius: 10px !important;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  border-color: #d9d9d9 !important;
+  box-shadow: none !important;
+}

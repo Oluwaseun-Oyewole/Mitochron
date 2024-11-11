@@ -46,11 +46,11 @@ export const MobileNavigation = () => {
           variants={variants}
           exit="exit"
           className={classNames(
-            `fixed right-0 container left-0 w-full h-screen top-[15vh] bg-gray-100 backdrop-blur-sm`
+            `fixed right-0 container left-0 w-full h-screen top-[15vh] bg-gray-100 backdrop-blur-sm z-50 md:hidden`
           )}
         >
           <motion.ul
-            className="flex flex-col gap-4 my-5"
+            className="flex flex-col gap-4 my-5 pl-5 md:pl-10 pr-5 md:pr-10"
             initial="hidden"
             animate="show"
             variants={container}
@@ -61,12 +61,12 @@ export const MobileNavigation = () => {
                   key={index}
                   className=""
                   variants={item}
-                  onClick={toggle}
+                  onClick={() => toggle()}
                 >
                   <NavLink
                     to={path}
                     className={classNames(
-                      "flex items-center gap-5 text-small p-3 rounded-md hover:bg-gray-50 transition-all ease-in-out duration-500 w-3/4",
+                      "flex items-center gap-5 text-small p-3 rounded-md hover:bg-gray-50 transition-all ease-in-out duration-500",
                       { "bg-white": path === pathname }
                     )}
                   >

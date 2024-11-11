@@ -21,7 +21,7 @@ const Hamburger = () => {
   const { isOpen, toggle } = useGlobalStoreHook()
 
   return (
-    <button onClick={toggle}>
+    <button onClick={toggle} className="z-50">
       <svg
         width="30"
         height="30"

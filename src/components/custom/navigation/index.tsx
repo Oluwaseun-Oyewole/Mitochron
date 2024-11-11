@@ -1,17 +1,18 @@
 import { notification } from "antd"
 import classNames from "classnames"
-import { NavLink, useLocation } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import logo from "../../../assets/svg/logo.svg"
 import message from "../../../assets/svg/message.svg"
 import bell from "../../../assets/svg/notifications.svg"
 import appRoutes from "../../../routes/app.routes"
+import { Routes } from "../../../routes/routes"
 import Hamburger from "../hambugger"
 import { MobileNavigation } from "../mobile"
 
 const HeaderNavigation = () => {
   const { pathname } = useLocation()
   const [api, contextHolder] = notification.useNotification()
-
+  const navigate = useNavigate()
   const close = () => {
     api.destroy()
   }
@@ -27,14 +28,17 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className="sticky top-0 left-0 font-roboto border-b-[1px] border-gray-200"
+      className="sticky top-0 left-0 font-roboto border-b-[1px] border-gray-200 z-50"
       role="banner"
     >
       <nav
-        className="flex items-center justify-between h-[15vh] backdrop-blur-sm container bg-white"
+        className="flex items-center justify-between h-[15vh] backdrop-blur-sm overallContainer pl-5 md:pl-10 pr-5 md:pr-10 bg-white"
         aria-label="Navigation"
       >
-        <div className="block md:hidden">
+        <div
+          className="block md:hidden"
+          onClick={() => navigate(Routes.dashboard)}
+        >
           <img src={logo} alt="logo icon" className="w-[100.5px]" />
         </div>
         <ul className="md:flex items-center gap-8 hidden">
