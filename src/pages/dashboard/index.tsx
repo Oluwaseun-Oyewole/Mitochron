@@ -1,5 +1,4 @@
-import { LoadingOutlined } from "@ant-design/icons"
-import { Spin } from "antd"
+import { Skeleton } from "antd"
 import React, { useEffect, useRef, useState } from "react"
 import draft from "../../assets/svg/department.svg"
 import plusIcon from "../../assets/svg/Plus_Button.svg"
@@ -56,13 +55,16 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <ModalWrapper ref={modalRef} />
-      <section className="mt-8 xl:flex items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10 h-[87vh] overflow-y-scroll pb-20">
-        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%]">
+      <section className="mt-8 xl:flex items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10 h-[87vh] overflow-y-scroll pb-32">
+        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%] min-h-[100px]">
           {loading && (
-            <div className="flex items-center justify-center">
-              <Spin indicator={<LoadingOutlined spin />} size="small" />
-            </div>
+            <>
+              {new Array(3)?.fill({})?.map((_, index) => {
+                return <Skeleton active paragraph={{ rows: 4 }} key={index} />
+              })}
+            </>
           )}
+
           {cards?.map((card, index) => {
             return (
               <li

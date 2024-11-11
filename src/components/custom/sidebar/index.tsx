@@ -23,7 +23,6 @@ const Sidebar = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.3,
-        delay: 0.5,
       },
     },
   }
@@ -36,7 +35,7 @@ const Sidebar = () => {
   return (
     <aside
       role="complementary"
-      className="w-full border-r-[1px] overflow-y-scroll hidden lg:block overflow-y-scroll h-[87vh]"
+      className="w-full border-r-[1px] hidden lg:block overflow-y-scroll h-[87vh]"
     >
       <motion.ul
         ref={ref}

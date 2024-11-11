@@ -40,13 +40,12 @@ const Conversion = () => {
     const convertedAmount = amount * rate
     return parseFloat(convertedAmount.toFixed(2))
   }
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValues((values) => {
       return { ...values, amount: +e.target.value }
     })
     const allNotEmpty = areAllObjectsNotEmpty(formValues)
-    if (allNotEmpty) {
+    if (!allNotEmpty) {
       const convertedAmount = convertCurrency(
         +e.target.value,
         formValues?.fromCurrency,
@@ -64,7 +63,7 @@ const Conversion = () => {
       return { ...values, [field]: value }
     })
     const allNotEmpty = areAllObjectsNotEmpty(formValues)
-    if (allNotEmpty) {
+    if (!allNotEmpty) {
       const convertedAmount = convertCurrency(
         formValues?.amount,
         formValues?.fromCurrency,
@@ -144,7 +143,7 @@ const Conversion = () => {
                 formatOptions={formatCurrencyOption}
               />
 
-              <div className="-ml-5 -mt-1">
+              <div className="-ml-5 ">
                 <CustomInput
                   name="amount"
                   onChange={(e) => handleInputChange(e)}

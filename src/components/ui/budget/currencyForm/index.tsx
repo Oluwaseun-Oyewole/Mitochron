@@ -1,7 +1,6 @@
 import { message, Select } from "antd"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 import edit from "../../../../assets/svg/edit.svg"
-import { areAllObjectsNotEmpty } from "../../../../utils/helper"
 import {
   CountryOption,
   countryOptions,
@@ -171,12 +170,7 @@ const CurrencyForm = () => {
           </div>
           <div className="mt-10 lg:mt-20 border-t-[1px] border-gray-200">
             <div className="px-7 py-5">
-              <CustomButton
-                variant="form"
-                type="submit"
-                //@ts-ignore
-                disabled={areAllObjectsNotEmpty(errors)}
-              >
+              <CustomButton variant="form" type="submit">
                 <img src={edit} alt="edit" />
                 Edit Overview
               </CustomButton>

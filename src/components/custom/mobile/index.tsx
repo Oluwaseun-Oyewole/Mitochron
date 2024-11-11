@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import { AnimatePresence, motion } from "framer-motion"
-import { NavLink, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useGlobalStoreHook } from "../../../hooks"
 import appRoutes from "../../../routes/app.routes"
 
@@ -46,7 +46,7 @@ export const MobileNavigation = () => {
           variants={variants}
           exit="exit"
           className={classNames(
-            `fixed right-0 container left-0 w-full h-screen top-[15vh] bg-gray-100 backdrop-blur-sm z-50 md:hidden`
+            `fixed right-0 container left-0 w-full h-screen top-[15vh] bg-gray-100 shadow-lg z-50 md:hidden`
           )}
         >
           <motion.ul
@@ -63,7 +63,7 @@ export const MobileNavigation = () => {
                   variants={item}
                   onClick={() => toggle()}
                 >
-                  <NavLink
+                  <Link
                     to={path}
                     className={classNames(
                       "flex items-center gap-5 text-small p-3 rounded-md hover:bg-gray-50 transition-all ease-in-out duration-500",
@@ -72,7 +72,7 @@ export const MobileNavigation = () => {
                   >
                     <img src={imagePath} alt="" className="w-[20px]" />
                     <p className="font-normal text-base text">{name}</p>
-                  </NavLink>
+                  </Link>
                 </motion.li>
               )
             })}

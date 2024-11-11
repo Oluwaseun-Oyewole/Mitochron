@@ -1,8 +1,6 @@
-Brief overview of your approach.
+### Mitochron Frontend Assessment
 
-#### Mitochron Frontend Assessment
-
-### STEPS
+#### STEPS
 
 ```
 Clone the project - git clone ...
@@ -11,7 +9,7 @@ run Yarn install || npm install
 run yarn dev
 ```
 
-### PROJECT SETUP
+#### PROJECT SETUP
 
 ```
 Linting setup with eslint-config, prettier
@@ -22,7 +20,7 @@ Styling: Tailwind CSS, AntD
 Routing: React Router
 ```
 
-### TECHNOLOGIES
+#### TECHNOLOGIES
 
 ```
 ReactJs
