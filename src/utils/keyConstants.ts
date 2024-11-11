@@ -6,7 +6,18 @@ export const keyConstants = {
   AUTH_TOKEN: "auth_key",
 }
 
-export const DashboardCards = [
+export interface DashboardCardInterface {
+  id: number
+  description: string
+  department: string
+  unitCount: string
+  image: string
+  background: string
+  cardBackground: string
+  departmentCount: string
+}
+
+export const DashboardCards: DashboardCardInterface[] = [
   {
     id: 0,
     description:

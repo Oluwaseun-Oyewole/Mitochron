@@ -1,15 +1,39 @@
-import React, { useEffect, useRef } from "react"
+import { LoadingOutlined } from "@ant-design/icons"
+import { Spin } from "antd"
+import React, { useEffect, useRef, useState } from "react"
 import draft from "../../assets/svg/department.svg"
 import plusIcon from "../../assets/svg/Plus_Button.svg"
 import ModalWrapper, { IModalWrapper } from "../../components/antd/modal"
 import CustomButton from "../../components/custom/button"
 import { useGlobalStoreHook } from "../../hooks"
-import { DashboardCards } from "../../utils/keyConstants"
+import {
+  DashboardCardInterface,
+  DashboardCards,
+} from "../../utils/keyConstants"
 
 const Dashboard = () => {
   const modalRef = useRef<IModalWrapper>(null)
-
   const { scrollToTop } = useGlobalStoreHook()
+  const [cards, setCards] = useState<DashboardCardInterface[]>([])
+  const [loading, setLoading] = useState(false)
+
+  const fetchCards = (): Promise<DashboardCardInterface[]> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(DashboardCards)
+      }, 2000)
+    })
+  }
+
+  useEffect(() => {
+    const loadData = async () => {
+      setLoading(true)
+      const data = await fetchCards()
+      setCards(data)
+      setLoading(false)
+    }
+    loadData()
+  }, [])
 
   useEffect(() => {
     scrollToTop()
@@ -32,8 +56,13 @@ const Dashboard = () => {
     <React.Fragment>
       <ModalWrapper ref={modalRef} />
       <section className="mt-8 flex flex-col xl:flex-row items-start gap-5 pl-[25px] pr-5 md:pr-10">
-        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%] bg-red-500 h-[270px]">
-          {DashboardCards?.map((card, index) => {
+        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%]">
+          {loading && (
+            <div className="flex items-center justify-center">
+              <Spin indicator={<LoadingOutlined spin />} size="small" />
+            </div>
+          )}
+          {cards?.map((card, index) => {
             return (
               <li
                 key={index}
