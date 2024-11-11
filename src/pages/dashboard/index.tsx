@@ -27,6 +27,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const loadData = async () => {
+      setCards([])
       setLoading(true)
       const data = await fetchCards()
       setCards(data)
@@ -44,7 +45,7 @@ const Dashboard = () => {
       title: "",
       content: (
         <div>
-          <h1 className="flex items-center justify-center font-normal text-lg">
+          <h1 className="flex items-center justify-center font-normal text-sm">
             Department form coming soon
           </h1>
         </div>
@@ -55,8 +56,8 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <ModalWrapper ref={modalRef} />
-      <section className="mt-8 flex flex-col xl:flex-row items-start gap-5 pl-[25px] pr-5 md:pr-10">
-        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%]">
+      <section className="mt-8 flex flex-col xl:flex-row items-start gap-5 pl-[25px] pr-5 md:pr-10 mb-10">
+        <ul className="lg:overflow-x-scroll flex flex-col md:flex-row gap-5 items-start basis-[67%] h-[270px]">
           {loading && (
             <div className="flex items-center justify-center">
               <Spin indicator={<LoadingOutlined spin />} size="small" />
@@ -76,7 +77,7 @@ const Dashboard = () => {
                 <div className="text-small flex justify-between pt-7 pb-2 items-center">
                   <div>
                     <h3 className="text-sm">{card?.department}</h3>
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex items-center gap-3 pt-2 text-xs">
                       <h3>{card?.departmentCount}</h3>
                       <h3>{card?.unitCount}</h3>
                     </div>
@@ -93,21 +94,23 @@ const Dashboard = () => {
             )
           })}
         </ul>
-        <div className="bg-gray-100 flex justify-between flex-col items-center rounded-2xl basis-[33%] h-[270px] hover:opacity-90 transition-all ease-in-out duration-500">
-          <div />
-          <div className="bg-white p-2 rounded-full w-fit">
-            <img src={plusIcon} className="w-[60px]" alt="" />
-          </div>
+        <div className="w-full md:w-1/2 lg:w-full md:basis-[33%]">
+          <div className="bg-gray-100 flex justify-between flex-col items-center rounded-2xl h-[270px] hover:opacity-90 transition-all ease-in-out duration-500">
+            <div />
+            <div className="bg-white p-2 rounded-full w-fit">
+              <img src={plusIcon} className="w-[60px]" alt="" />
+            </div>
 
-          <div className="w-[90%] mb-4">
-            <CustomButton
-              variant="secondary"
-              className="!bg-white !border-green-800"
-              onClick={createDepartmentModal}
-            >
-              <img src={draft} alt="" />
-              <p> Create a department</p>
-            </CustomButton>
+            <div className="w-[90%] mb-4">
+              <CustomButton
+                variant="secondary"
+                className="!bg-white !border-green-800"
+                onClick={createDepartmentModal}
+              >
+                <img src={draft} alt="" />
+                <p> Create a department</p>
+              </CustomButton>
+            </div>
           </div>
         </div>
       </section>
