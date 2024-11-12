@@ -34,3 +34,9 @@ Framer-motion
 ```
 
 [Mitochron](https://mitochron.vercel.app)
+
+![screenshot](src/assets/png/one.png)
+![screenshot](src/assets/png/three.png)
+![screenshot](src/assets/png/two.png)
+![screenshot](src/assets/png/mobile.png)
+![screenshot](src/assets/png/mobile.png)
