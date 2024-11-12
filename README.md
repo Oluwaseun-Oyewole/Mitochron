@@ -39,4 +39,4 @@ Framer-motion
 ![screenshot](src/assets/png/three.png)
 ![screenshot](src/assets/png/two.png)
 ![screenshot](src/assets/png/mobile.png)
-![screenshot](src/assets/png/mobile.png)
+![screenshot](src/assets/png/four.png)
