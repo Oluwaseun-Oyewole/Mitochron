@@ -1,5 +1,5 @@
 import { Select } from "antd"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import {
   areAllObjectsNotEmpty,
   Currency,
@@ -18,16 +18,16 @@ import AntSelectWrapper from "../../countryCurrency"
 
 const { Option } = Select
 export interface ConversionFormInterface {
-  fromCurrency: SourceCurrency
+  fromCurrency: string
   amount: number
-  toCurrency: Currency
+  toCurrency: string
 }
 
 const Conversion = () => {
   const [formValues, setFormValues] = useState<ConversionFormInterface>({
-    fromCurrency: "NGN",
+    fromCurrency: "",
     amount: 0,
-    toCurrency: "USD",
+    toCurrency: "",
   })
   const [convertedAmount, setConvertedAmount] = useState(0)
 
@@ -48,8 +48,8 @@ const Conversion = () => {
     if (!allNotEmpty) {
       const convertedAmount = convertCurrency(
         +e.target.value,
-        formValues?.fromCurrency,
-        formValues?.toCurrency
+        formValues?.fromCurrency as SourceCurrency,
+        formValues?.toCurrency as Currency
       )
       setConvertedAmount(convertedAmount)
     }
@@ -66,15 +66,11 @@ const Conversion = () => {
     if (!allNotEmpty) {
       const convertedAmount = convertCurrency(
         formValues?.amount,
-        formValues?.fromCurrency,
-        formValues?.toCurrency
+        formValues?.fromCurrency as SourceCurrency,
+        formValues?.toCurrency as Currency
       )
       setConvertedAmount(convertedAmount)
     }
-  }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
   }
 
   const renderCountryOption = (option: CountryOption) => (
@@ -82,7 +78,6 @@ const Conversion = () => {
       <div className="flex items-center gap-3">
         <span className="text-3xl">{option.flag}</span>
         <span>{option.code}</span>
-        <p>{currencyFormatter(convertedAmount)}</p>
       </div>
       <span>{option.currencySymbol}</span>
     </div>
@@ -132,34 +127,40 @@ const Conversion = () => {
         <div className="py-5 border-b-[1px] border-gray-200">
           <h1 className="text-medium lg:text-xMedium px-7">Conversion Rate</h1>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="px-7 py-5">
-            <div className="pb-4 grid grid-flow-cols grid-cols-[40%_60%] items-center">
-              <AntSelectWrapper
-                onChange={(value: string) =>
-                  handleChange("fromCurrency", value)
-                }
-                placeholder="Currency"
-                formatOptions={formatCurrencyOption}
-              />
 
-              <div className="-ml-5 ">
-                <CustomInput
-                  name="amount"
-                  onChange={(e) => handleInputChange(e)}
-                />
-              </div>
+        <div className="px-7 py-5">
+          <div className="pb-4 grid grid-flow-cols grid-cols-[40%_60%] items-center">
+            <AntSelectWrapper
+              onChange={(value: string) => handleChange("fromCurrency", value)}
+              placeholder="Currency"
+              formatOptions={formatCurrencyOption}
+            />
+
+            <div className="-ml-5 ">
+              <CustomInput
+                name="amount"
+                onChange={(e) => handleInputChange(e)}
+                autoComplete="off"
+                autoFocus
+                placeholder="type amount to convert"
+              />
             </div>
+          </div>
+          <div className="relative">
+            <p className="absolute top-[25px] left-[120px] right-10 z-50">
+              {convertedAmount > 0 &&
+                !isNaN(convertedAmount) &&
+                currencyFormatter(convertedAmount)}
+            </p>
             <div className="pb-4">
               <AntSelectWrapper
                 onChange={(value: string) => handleChange("toCurrency", value)}
                 placeholder="Currency"
                 formatOptions={formatCountryOption}
               />
-              <p></p>
             </div>
           </div>
-        </form>
+        </div>
       </div>
       <div className="bg-error-100 flex items-center py-6 lg:py-10 px-8 rounded-3xl my-5">
         <p className="text-error-200 text-sm lg:text-medium leading-7 lg:leading-8">

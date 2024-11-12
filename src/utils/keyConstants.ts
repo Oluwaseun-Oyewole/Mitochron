@@ -71,11 +71,11 @@ export const countryCurrencyOptions: CountryOption[] = [
 
 export const currencyOptions: CurrencyOption[] = [
   { code: "NGN", currencySymbol: "₦", flag: "🇳🇬" },
-  // {
-  //   code: "GHS",
-  //   currencySymbol: "₵",
-  //   flag: "🇬🇭",
-  // },
+  {
+    code: "GHS",
+    currencySymbol: "₵",
+    flag: "🇬🇭",
+  },
 ]
 
 export const taxTypes = [

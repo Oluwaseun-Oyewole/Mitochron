@@ -23,7 +23,9 @@ const CurrencyAndTaxes = () => {
           <DatePicker
             format="DD, MMMM, YY"
             placeholder="10, October, 24"
-            suffixIcon={<img src={calender} className="w-[20px]" />}
+            suffixIcon={
+              <img src={calender} className="w-[15px]" alt="calender" />
+            }
             className="!bg-gray-100 !px-5 py-4 !w-[180px] !rounded-lg !border-transparent"
           />
         </div>
@@ -32,7 +34,9 @@ const CurrencyAndTaxes = () => {
           <DatePicker
             format="DD, MMMM, YY"
             placeholder="10, October, 24"
-            suffixIcon={<img src={calender} className="w-[20px]" />}
+            suffixIcon={
+              <img src={calender} className="w-[15px]" alt="calender" />
+            }
             className="!bg-gray-100 py-4 !px-5 !w-[180px] !rounded-lg !border-transparent"
           />
         </div>
